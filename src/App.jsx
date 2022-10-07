@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginNav from './components/TopNav/LoginNav';
+import NotLoginNavBar from './components/TopNav/NotLoginNav';
+import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
   return (
-    <div className="App">
-      테스트화면
+    <div>
+      <GlobalStyles />
+      <LoginNav />
     </div>
   );
 }
