@@ -1,5 +1,4 @@
 import React from 'react'
-import colors from '../../styles/colors';
 import { AnimationLayout, FlowBox, FlowText, TextDiv, ITStyle, ITStyle2, TerviewStyle, OneText } from './styles';
 
 function AnimationBar() {

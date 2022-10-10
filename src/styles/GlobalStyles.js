@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
         font-style: normal;
     } */
     * {
-        /* font-family: 'Noto Sans KR', sans-serif !important; */
+        font-family: 'Noto Sans KR', sans-serif !important;
         font-style: normal;
         letter-spacing: -0.02em;
         user-select: none;

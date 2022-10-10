@@ -28,6 +28,8 @@ export const BigbuttonLayout = styled.div`
     row-gap: 79px;
 `
 
+// -------------여기까지 공통별•직종별 큰 버튼---------------
+
 export const Smallbutton = styled.button`
     width: 338px;
     height: 251px;
@@ -54,6 +56,8 @@ export const SmallButtonLayout = styled.div`
 
 `
 
+// -------------여기까지 직종별(FE, BE, UxUi, PM 등) 작은 버튼---------------
+
 export const StartButtonLayout = styled.button`
     margin-left: 300px;
     margin-top: 100px;
@@ -78,3 +82,5 @@ export const StartButtonLayout = styled.button`
         transform: scale(1.1, 1.1);
     }
 `
+
+// -------------여기까지 시작하기 버튼---------------

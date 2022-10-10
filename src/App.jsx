@@ -4,6 +4,8 @@ import GlobalStyles from './styles/GlobalStyles';
 import { BigButton, BigbuttonLayout, StartButtonLayout, Smallbutton } from './components/commons/Button/styles';
 import AnimationBar from './components/AnimationBar/index';
 import { MediaDiv } from './styles/common';
+import SignupButton from './components/commons/Button/SignupButton';
+import LoginButton from './components/commons/Button/LoginButton';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         </BigbuttonLayout>
         <Smallbutton>FE</Smallbutton>
         <StartButtonLayout>시작하기</StartButtonLayout>
+        <SignupButton />
+        <LoginButton />
       </MediaDiv>
     </div>
   );
