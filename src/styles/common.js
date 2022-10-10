@@ -11,4 +11,8 @@ export const MediaDiv = styled.div`
     @media screen and (max-width: 1200px) {
         width: 100%;
     }
+
+    position: relative;
+    min-height: 100%;
+    height: 100%;
 `;

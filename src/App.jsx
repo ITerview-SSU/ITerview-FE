@@ -6,6 +6,7 @@ import AnimationBar from './components/AnimationBar/index';
 import { MediaDiv } from './styles/common';
 import SignupButton from './components/commons/Button/SignupButton';
 import LoginButton from './components/commons/Button/LoginButton';
+import Footer from './components/commons/Footer/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <StartButtonLayout>시작하기</StartButtonLayout>
         <SignupButton />
         <LoginButton />
+        <Footer />
       </MediaDiv>
     </div>
   );

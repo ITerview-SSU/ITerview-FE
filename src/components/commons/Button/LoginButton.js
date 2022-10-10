@@ -32,7 +32,7 @@ const LoginButtonStyle = styled.button`
 
 function LoginButton({ disabled, onClick }) {
   return (
-    <LoginButtonStyle disabled="false">로그인</LoginButtonStyle>
+    <LoginButtonStyle disabled={false}>로그인</LoginButtonStyle>
   )
 }
 

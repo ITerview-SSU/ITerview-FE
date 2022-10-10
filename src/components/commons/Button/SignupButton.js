@@ -31,7 +31,7 @@ const SignupButtonStyle = styled.button`
 
 function SignupButton({ disabled, onClick }) {
   return (
-    <SignupButtonStyle disabled="false">회원가입</SignupButtonStyle>
+    <SignupButtonStyle disabled={false}>회원가입</SignupButtonStyle>
   )
 }
 
