@@ -9,8 +9,6 @@ export const NavLayout = styled.div`
 export const Logolayout = styled.div`
     display: flex;
     align-items: center;
-    padding-left: 118px;
-    padding-top: 36px;
 `
 
 export const Logo2Layout = styled.div`
@@ -18,11 +16,8 @@ export const Logo2Layout = styled.div`
 `
 
 export const SignupButton = styled.button`
-    position: absolute;
     width: 82px;
     height: 32px;
-    left: 1240px;
-    top: 40px;
 
     text-align: center;
 
@@ -37,11 +32,8 @@ export const SignupButton = styled.button`
 `
 
 export const LogininButton = styled.button`
-    position: absolute;
     width: 67px;
     height: 32px;
-    left: 1156px;
-    top: 40px;
 
     text-align: center;
 
@@ -54,4 +46,11 @@ export const LogininButton = styled.button`
     line-height: 20px;
     letter-spacing: 0.05em;
     border: none;
+`
+
+export const SignButtonLayout = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 118px;
 `

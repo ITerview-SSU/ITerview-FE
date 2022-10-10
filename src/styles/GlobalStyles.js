@@ -17,8 +17,14 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
     }
+    /* @font-face {
+        font-family: 'Gotham';
+        src: url("http://fonts.cdnfonts.com/css/gotham");
+        unicode-range: U+0041-005A, U+0061-007A;
+        font-style: normal;
+    } */
     * {
-        font-family: 'Noto Sans KR', sans-serif !important;
+        /* font-family: 'Noto Sans KR', sans-serif !important; */
         font-style: normal;
         letter-spacing: -0.02em;
         user-select: none;

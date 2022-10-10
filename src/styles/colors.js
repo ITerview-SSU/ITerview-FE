@@ -12,7 +12,7 @@ const colors = {
     white_100: "#FFFFFF",
     bgColor: "#F5F5F7",
     pointColor_1: "#9E3DFF",
-    pointColor_2: "3840FF",
+    pointColor_2: "#3840FF",
 };
 
 export default colors;
