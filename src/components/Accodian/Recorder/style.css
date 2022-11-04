@@ -1,0 +1,20 @@
+.main-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .video {
+    width: 1204px;
+    height: 600px;
+  }
+  
+  .blink_me {
+    animation: blinker 1s linear infinite;
+    color: crimson;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
