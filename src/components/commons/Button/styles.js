@@ -59,9 +59,6 @@ export const SmallButtonLayout = styled.div`
 // -------------여기까지 직종별(FE, BE, UxUi, PM 등) 작은 버튼---------------
 
 export const StartButtonLayout = styled.button`
-    margin-left: 300px;
-    margin-top: 100px;
-
     width: 315px;
     height: 73px;
 

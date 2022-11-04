@@ -106,11 +106,6 @@ function AnimationBar() {
                         <TerviewStyle>ERVIEW</TerviewStyle>
                     </OneText>
                 </TextDiv>
-                {/* <AnimationBarStyle>DON’T AFRAID IT LET’S DO ITERVIEW</AnimationBarStyle>
-                <AnimationBarStyle>DON’T AFRAID IT LET’S DO ITERVIEW</AnimationBarStyle>
-                <AnimationBarStyle>DON’T AFRAID IT LET’S DO ITERVIEW</AnimationBarStyle>
-                <AnimationBarStyle>DON’T AFRAID IT LET’S DO ITERVIEW</AnimationBarStyle>
-                <AnimationBarStyle>DON’T AFRAID IT LET’S DO ITERVIEW</AnimationBarStyle> */}
             </FlowText>
         </FlowBox>
       </AnimationLayout>

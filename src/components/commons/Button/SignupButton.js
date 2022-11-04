@@ -6,6 +6,9 @@ const SignupButtonStyle = styled.button`
     width: 100%;
     width: 207.52px;
     height: 59.55px;
+    margin: 0 auto;
+    margin-top: 84px;
+    margin-bottom: 233px;
 
     background: ${colors.white_100};
     box-shadow: 0px 0px 12.9193px rgba(0, 0, 0, 0.1);

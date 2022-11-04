@@ -13,7 +13,6 @@ const flowing = keyframes`
 export const AnimationLayout = styled.div`
     display: flex;
     flex-direction: row;
-    /* row-gap: 30px; */
     background-color: ${colors.white_100};
 `
 
@@ -21,7 +20,7 @@ export const FlowBox = styled.div`
     position: relative;
     width: 100%;
     height: 46px;
-    overflow: hidden;
+    /* overflow: hidden; */
 `
 
 export const FlowText = styled.div`

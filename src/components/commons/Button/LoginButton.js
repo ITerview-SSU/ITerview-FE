@@ -3,10 +3,11 @@ import  styled  from 'styled-components';
 import colors from '../../../styles/colors';
 
 const LoginButtonStyle = styled.button`
-    margin: 100px;
-    width: 100%;
+    margin: 0 auto;
     width: 207.52px;
     height: 59.55px;
+    margin-top: 84px;
+    margin-bottom: 233px;
 
     background: ${colors.white_100};
     box-shadow: 0px 0px 12.9193px rgba(0, 0, 0, 0.1);

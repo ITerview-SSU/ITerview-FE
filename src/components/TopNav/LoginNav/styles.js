@@ -11,10 +11,11 @@ export const NavLoginLayout = styled.div`
 export const UserAndLogoutText = styled.div`
     color: ${colors.white_100};
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    padding-right: 118px;
+    /* padding-right: 118px; */
+    margin-left: 188px;
 `
 export const UserNickname = styled.div`
     width: 53px;

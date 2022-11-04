@@ -9,6 +9,7 @@ export const SearchBoxStyle = styled.div`
     flex-direction: row-reverse;
 
     width: 100%;
+    margin-left: 189px;
 `
 
 export const StyleSearchBar = styled.input`
