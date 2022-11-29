@@ -70,42 +70,6 @@ function AnimationBar() {
                         <TerviewStyle>ERVIEW</TerviewStyle>
                     </OneText>
                 </TextDiv>
-                <TextDiv>
-                    <OneText>
-                        <span>DON’T AFRAID</span>
-                        <ITStyle>IT</ITStyle>
-                        <span>LET’S DO</span>
-                        <ITStyle2>IT</ITStyle2>
-                        <TerviewStyle>ERVIEW</TerviewStyle>
-                    </OneText>
-                </TextDiv>
-                <TextDiv>
-                    <OneText>
-                        <span>DON’T AFRAID</span>
-                        <ITStyle>IT</ITStyle>
-                        <span>LET’S DO</span>
-                        <ITStyle2>IT</ITStyle2>
-                        <TerviewStyle>ERVIEW</TerviewStyle>
-                    </OneText>
-                </TextDiv>
-                <TextDiv>
-                    <OneText>
-                        <span>DON’T AFRAID</span>
-                        <ITStyle>IT</ITStyle>
-                        <span>LET’S DO</span>
-                        <ITStyle2>IT</ITStyle2>
-                        <TerviewStyle>ERVIEW</TerviewStyle>
-                    </OneText>
-                </TextDiv>
-                <TextDiv>
-                    <OneText>
-                        <span>DON’T AFRAID</span>
-                        <ITStyle>IT</ITStyle>
-                        <span>LET’S DO</span>
-                        <ITStyle2>IT</ITStyle2>
-                        <TerviewStyle>ERVIEW</TerviewStyle>
-                    </OneText>
-                </TextDiv>
             </FlowText>
         </FlowBox>
       </AnimationLayout>

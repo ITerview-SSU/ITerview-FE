@@ -29,6 +29,7 @@ export const FlowText = styled.div`
     width: 100%;
     height: 100%;
     white-space: nowrap;
+    overflow: hidden;
 `
 
 export const TextDiv = styled.div`

@@ -2,8 +2,8 @@ import styled from "styled-components";
 import colors from '../../../styles/colors';
 
 export const BigButton = styled.button`
-    width: 392px;
-    height: 357px;
+    width: 362px;
+    height: 327px;
 
     background: ${colors.white_100};
     box-shadow: 0px 0px 12.92px rgba(0, 0, 0, 0.1);

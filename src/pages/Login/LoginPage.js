@@ -5,28 +5,92 @@ import styled from 'styled-components';
 import AnimationBar from '../../components/AnimationBar';
 import LoginButton from '../../components/commons/Button/LoginButton';
 import colors from '../../styles/colors';
+import axios from 'axios';
+import { BaseUrl } from '../../privateKey';
+import { useState } from 'react';
+import { requestLogin, requestRefreshToken } from '../../apis/index';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const LoginClickHandler = () => {
+        navigate("/");
+      }
+
   return (
       <>
         <NotLoginNavBar />
         <AnimationBar/>
-        <LoginImg src={Login} alt='login' />
-        <LoginEmailBoxLayout>
-            <div>이메일</div>
-            <PlaceholderStyle placeholder='example@example.com' type="email"/>
-        </LoginEmailBoxLayout>
-        <LoginPasswordBoxLayout>
-            <div>비밀번호</div>
-            <PlaceholderStyle placeholder='••••••••' type="password" />
-        </LoginPasswordBoxLayout>
-        <LoginButton />
+        <FormStyle
+            onSubmit={async (e) => {
+                e.preventDefault();
+                await axios({
+                    url: `${BaseUrl}/auth/login`,
+                    method: "post",
+                    data: JSON.stringify({
+                        email,
+                        password,
+                    }),
+                    headers: {
+                        "Content-Type": "application/json; chaerset=utf-8",
+                    }
+                }).then((res) => {
+                    console.log(res);
+                    const { accessToken } = res.data;
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+                    localStorage.setItem('refreshToken', res.data['refreshToken']);
+                    setEmail("");
+                    setPassword("");
+                    alert("로그인 성공!")
+                    navigate("/");
+                }).catch((err) => {
+                    console.log(err);
+                    if (err.message == "비밀번호를 잘못 입력하였습니다.") {
+                        requestRefreshToken();
+                    }
+                    alert("로그인 실패")
+                })
+            }}>
+            <LoginImg src={Login} alt='login' />
+            <LoginEmailBoxLayout>
+                <div>이메일</div>
+                <PlaceholderStyle
+                    placeholder='example@example.com'
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                    }}
+                />
+            </LoginEmailBoxLayout>
+            <LoginPasswordBoxLayout>
+                <div>비밀번호</div>
+                <PlaceholderStyle
+                    placeholder='••••••••'
+                    type="password"
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
+                />
+            </LoginPasswordBoxLayout>
+            <LoginButton type= "submit"/>
+        </FormStyle>
       </>
   )
 }
 
 export default LoginPage
 
+const FormStyle = styled.form`
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+`
 const LoginImg = styled.img`
     padding-top: 124px;
 

@@ -10,11 +10,14 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.1.3",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-media-recorder": "^1.6.6",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "recoil": "^0.7.6",
     "styled-components": "^5.3.6",
     "styled-reset": "^4.4.2",
     "web-vitals": "^2.1.4"
@@ -46,5 +49,6 @@
   "devDependencies": {
     "eslint": "^8.24.0",
     "prettier": "^2.7.1"
-  }
+  },
+  "proxy": "http://ec2-52-78-126-242.ap-northeast-2.compute.amazonaws.com:8080"
 }

@@ -32,7 +32,7 @@ const SignupButtonStyle = styled.button`
     }
 `
 
-function SignupButton({ disabled, onClick }) {
+function SignupButton() {
   return (
     <SignupButtonStyle disabled={false}>회원가입</SignupButtonStyle>
   )

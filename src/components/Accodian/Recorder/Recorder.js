@@ -73,7 +73,7 @@ const RecordView = () => {
               audio: true,
               video: {
                 width: { exact: 1204, ideal: 1204 },
-                height: { exact: 400, ideal: 400 },
+                height: { exact: 600, ideal: 600 },
               }
             }}/>
           </>

@@ -4,8 +4,15 @@ import Mainillust from '../../assets/Mainillust.svg'
 import { StartButtonLayout } from '../../components/commons/Button/styles';
 import AnimationBar from '../../components/AnimationBar/index';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
+
+  const navigate = useNavigate();
+
+  const StartClickHandler = () => {
+    navigate("/select");
+  }
   return (
       <>
         <NotLoginNavBar />
@@ -28,7 +35,7 @@ const Homepage = () => {
           <ImgStyle>
             <img src={Mainillust} alt='Iterview' />
           </ImgStyle>
-          <StartButtonLayout>시작하기</StartButtonLayout>
+          <StartButtonLayout onClick={StartClickHandler}>시작하기</StartButtonLayout>
         </TextBoxLayout>
       </>
   )

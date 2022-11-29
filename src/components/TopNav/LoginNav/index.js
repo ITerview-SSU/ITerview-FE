@@ -4,12 +4,20 @@ import Logo2 from "../../../assets/Logo_2.svg"
 import SearchBar from '../../commons/SearchBar/SearchBar'
 import { Logolayout, NavLayout, Logo2Layout } from '../NotLoginNav/styles';
 import { NavLoginLayout, UserAndLogoutText, UserNickname, Nim, Boundary, LogoutText } from '../../TopNav/LoginNav/styles';
+import { useNavigate } from 'react-router-dom';
 
 function LoginNav() {
+
+  const navigate = useNavigate();
+
+  const onClickLogoHandler = () => {
+    navigate("/");
+  }
+
   return (
     <NavLayout>
         <NavLoginLayout>
-            <Logolayout>
+            <Logolayout onClick={onClickLogoHandler}>
                 <img src={Logo} alt="logo"/>
                 <Logo2Layout>
                 <img src={Logo2} alt="iTerview"/>
