@@ -2,7 +2,7 @@ import React from 'react'
 import  styled  from 'styled-components';
 import colors from '../../../styles/colors';
 
-const LoginButtonStyle = styled.button`
+export const LoginButtonStyle = styled.button`
     margin: 0 auto;
     width: 207.52px;
     height: 59.55px;
@@ -30,11 +30,3 @@ const LoginButtonStyle = styled.button`
         filter: brightness(80%);;
     }
 `
-
-function LoginButton({ disabled, onClick }) {
-  return (
-    <LoginButtonStyle disabled={false}>로그인</LoginButtonStyle>
-  )
-}
-
-export default LoginButton;

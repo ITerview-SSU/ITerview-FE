@@ -3,17 +3,23 @@ import NotLoginNavBar from '../../components/TopNav/NotLoginNav/index';
 import Login from '../../assets/LOGIN.svg'
 import styled from 'styled-components';
 import AnimationBar from '../../components/AnimationBar';
-import LoginButton from '../../components/commons/Button/LoginButton';
+import {LoginButtonStyle} from '../../components/commons/Button/LoginButton';
 import colors from '../../styles/colors';
 import axios from 'axios';
 import { BaseUrl } from '../../privateKey';
 import { useState } from 'react';
 import { requestLogin, requestRefreshToken } from '../../apis/index';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { userState } from '../../recoil/user';
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // const [user, setUser] = useRecoilState(userState);
+
+    const btndisabled = email && password;
+
     const navigate = useNavigate();
 
     const LoginClickHandler = () => {
@@ -44,6 +50,7 @@ function LoginPage() {
                     localStorage.setItem('refreshToken', res.data['refreshToken']);
                     setEmail("");
                     setPassword("");
+                    // setUser(res.data);
                     alert("로그인 성공!")
                     navigate("/");
                 }).catch((err) => {
@@ -77,7 +84,7 @@ function LoginPage() {
                     }}
                 />
             </LoginPasswordBoxLayout>
-            <LoginButton type= "submit"/>
+            <LoginButtonStyle type= "submit" disabled={btndisabled ? false : true}>로그인</LoginButtonStyle>
         </FormStyle>
       </>
   )
