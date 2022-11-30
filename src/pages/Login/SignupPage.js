@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import AnimationBar from '../../components/AnimationBar';
 import LoginButton from '../../components/commons/Button/LoginButton';
 import colors from '../../styles/colors';
-import SignupButton from '../../components/commons/Button/SignupButton';
+import {SignupButtonStyle} from '../../components/commons/Button/SignupButton';
 import { useState } from 'react';
 import { BaseUrl } from '../../privateKey';
 import { requestSignup } from '../../apis/index';
@@ -16,6 +16,11 @@ function SignupPage() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState('');
+
+    const Btndisabled = username && email && (password === passwordConfirm);
+
+
   return (
       <>
         <NotLoginNavBar />
@@ -81,7 +86,18 @@ function SignupPage() {
                     }}
                 />
             </LoginPasswordBoxLayout>
-            <SignupButton type= "submit"/>
+            <LoginPasswordBoxLayout2>
+                <div>비밀번호 확인</div>
+                <PlaceholderStyle
+                    placeholder='••••••••'
+                    type="password"
+                    value={passwordConfirm}
+                    onChange={(e) => {
+                        setPasswordConfirm(e.target.value);
+                    }}
+                />
+            </LoginPasswordBoxLayout2>
+            <SignupButtonStyle type= "submit" disabled={Btndisabled ? false : true}>회원가입</SignupButtonStyle>
         </FormStyle>
       </>
   )
@@ -113,6 +129,10 @@ const LoginEmailBoxLayout = styled.div`
     margin: 0 auto;
 `
 const LoginPasswordBoxLayout = styled.div`
+    padding-top: 30px;
+    margin: 0 auto;
+`
+const LoginPasswordBoxLayout2 = styled.div`
     padding-top: 30px;
     margin: 0 auto;
 `

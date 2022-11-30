@@ -2,7 +2,7 @@ import React from 'react'
 import  styled  from 'styled-components';
 import colors from '../../../styles/colors';
 
-const SignupButtonStyle = styled.button`
+export const SignupButtonStyle = styled.button`
     width: 100%;
     width: 207.52px;
     height: 59.55px;
@@ -31,11 +31,3 @@ const SignupButtonStyle = styled.button`
         filter: brightness(80%);;
     }
 `
-
-function SignupButton() {
-  return (
-    <SignupButtonStyle disabled={false}>회원가입</SignupButtonStyle>
-  )
-}
-
-export default SignupButton;
