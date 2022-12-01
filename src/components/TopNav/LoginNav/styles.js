@@ -39,15 +39,20 @@ export const Nim = styled.div`
 export const Boundary = styled.div`
     width: 11px;
     padding-left: 15.03px;
+    padding-right: 5px;
 `
 
-export const LogoutText = styled.div`
+export const LogoutText = styled.button`
     width: 71px;
     height: 25px;
 
     font-size: 18.4932px;
     line-height: 25px;
     letter-spacing: 0.05em;
+    background-color: transparent;
+    border: none;
+    outline: none;
 
-    padding-left: 15px;
+    color: white;
+
 `

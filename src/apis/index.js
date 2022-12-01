@@ -55,3 +55,7 @@ import { BaseUrl } from "../privateKey";
       return axios.defaults.headers.common["Authorization".split(" ")[1]];
     }
   }
+
+  const instance = axios.create({ baseURL: BaseUrl, withCredentials: true });
+
+  export const requestRole = (questionId) => instance.get(`/api/questions?category=${questionId}`);

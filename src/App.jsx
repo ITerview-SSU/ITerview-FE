@@ -28,16 +28,6 @@ function App() {
           <Route exact={true} path="/question" element={<QuesitonPage />}></Route>
           <Route exact={true} path="/mypage" element={<Mypage />}></Route>
         </Routes>
-        {/* <LoginNav />
-        <AnimationBar />
-        <BigbuttonLayout>
-          <BigButton>공통별</BigButton>
-          <BigButton>직종별</BigButton>
-        </BigbuttonLayout>
-        <Smallbutton>FE</Smallbutton>
-        <StartButtonLayout>시작하기</StartButtonLayout>
-        <SignupButton />
-        <LoginButton /> */}
         <Footer />
       </MediaDiv>
     </div>

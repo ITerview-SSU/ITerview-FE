@@ -16,7 +16,7 @@ import { userState } from '../../recoil/user';
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [user, setUser] = useRecoilState(userState);
+    const [user, setUser] = useRecoilState(userState);
 
     const btndisabled = email && password;
 
@@ -50,7 +50,7 @@ function LoginPage() {
                     localStorage.setItem('refreshToken', res.data['refreshToken']);
                     setEmail("");
                     setPassword("");
-                    // setUser(res.data);
+                    setUser(res.data);
                     alert("로그인 성공!")
                     navigate("/");
                 }).catch((err) => {

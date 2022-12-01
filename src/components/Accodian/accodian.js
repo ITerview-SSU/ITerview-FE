@@ -19,6 +19,8 @@ const data = [
 ]
 
 export default function Accodian() {
+
+
   return (
     <div className="App">
         <AccodianBottom>

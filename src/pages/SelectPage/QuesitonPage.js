@@ -4,8 +4,14 @@ import AnimationBar from '../../components/AnimationBar'
 import LoginNav from '../../components/TopNav/LoginNav'
 import styled from 'styled-components';
 import colors from '../../styles/colors';
+import { useEffect, useState } from 'react';
 
 function QuesitonPage() {
+
+  const [questionId, setQuestionId] = useState();
+
+
+
   return (
     <>
       <LoginNav />
