@@ -6,26 +6,31 @@ import { NavLoginLayout, Nim, UserAndLogoutText, UserNickname, Boundary, LogoutT
 import { useNavigate } from 'react-router-dom';
 import { userState } from '../../../recoil/user';
 import SearchBar from '../../commons/SearchBar/SearchBar';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import axios from 'axios';
 import { BaseUrl } from '../../../privateKey';
 
 function NotLoginNavBar() {
 
   const [isLogined, setIsLogined] = useState();
-  const user = useRecoilValue(userState);
+  const [user, setUser] = useRecoilState(userState);
 
   const navigate = useNavigate();
 
   const logoutHandler = () => {
+    const refreshToken = localStorage.getItem('refreshToken');
     axios.get(`${BaseUrl}/auth/logout`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization,
+        // Authorization : `Bearer ${refreshToken}`
       },})
     .then((res) => {
-      if(res.data.success){
+      if(res.status === 200){
+        setUser(null);
+        localStorage.removeItem('refreshToken',)
+        alert("로그아웃 성공!");
         navigate("/");
+
     } else {
         alert('Error')
     }
