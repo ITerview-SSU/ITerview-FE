@@ -10,12 +10,10 @@ import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 const VideoPreview = ({ stream }) => {
   const videoRef = useRef(null);
 
-  console.log("sfasd", videoRef);
-
   useEffect(() => {
     if (videoRef.current && stream) {
       videoRef.current.srcObject = stream;
-      console.log(videoRef.current.srcObject);
+      // console.log(videoRef.current.srcObject);
     }
   }, [stream]);
 
@@ -25,10 +23,7 @@ const VideoPreview = ({ stream }) => {
 
   return <video ref={videoRef} constraints={{
     audio: true,
-    video: {
-      width: { exact: 1204, ideal: 1204 },
-      height: { exact: 600, ideal: 600 },
-    }
+    video: true
   }} autoPlay controls />;
 };
 
@@ -50,7 +45,7 @@ const RecordView = () => {
     stopRecording();
   };
 
-  console.log(previewStream, mediaBlobUrl);
+  // console.log(previewStream, mediaBlobUrl);
 
   return (
     <div className="main-container">
@@ -71,10 +66,7 @@ const RecordView = () => {
             </Tooltip>
             <VideoPreview stream={previewStream} constraints={{
               audio: true,
-              video: {
-                width: { exact: 1204, ideal: 1204 },
-                height: { exact: 600, ideal: 600 },
-              }
+              video: true,
             }}/>
           </>
         ) : (

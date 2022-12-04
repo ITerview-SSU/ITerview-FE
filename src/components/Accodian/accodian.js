@@ -1,32 +1,39 @@
 import React from "react";
 import Accodianitem from "./accodianitem";
 import styled from 'styled-components';
-
-
-const data = [
-    {
-        title: "질문이 무엇이 있을까요~?",
-    },
-    {
-        title: "질문이 무엇이 있을까요~?",
-    },
-    {
-        title: "질문이 무엇이 있을까요~?",
-    },
-    {
-        title: "질문이 무엇이 있을까요~?",
-    },
-]
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { BaseUrl } from '../../privateKey';
+import { roleCategory } from "../category";
 
 export default function Accodian() {
 
+    const category = ["FE","BE","IOS","ANDROID","UIUX","PM"];
+
+    const [isQuestion, setIsQuestion] = useState([]);
+
+    useEffect(() => {
+        try {
+            axios.get(`${BaseUrl}/api/questions?category=FE`)
+                .then((res) => {
+                    setIsQuestion(res.data);
+                    console.log(res.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
 
   return (
     <div className="App">
         <AccodianBottom>
             <AccodianLayout>
-                {data.map((item, index) => (
-                <Accodianitem key={index} index={index} title={item.title}/>
+                {isQuestion && 
+                isQuestion.questions?.map((questions, questionId) => (
+                <Accodianitem key={questionId} title={questions.questionString}/>
                 ))}
             </AccodianLayout>
         </AccodianBottom>

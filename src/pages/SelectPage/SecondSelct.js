@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import AnimationBar from '../../components/AnimationBar';
 import { Smallbutton } from '../../components/commons/Button/styles';
 import LoginNav from '../../components/TopNav/LoginNav/index';
@@ -8,11 +8,17 @@ import { useNavigate } from 'react-router-dom';
 
 function SecondSelct() {
 
+  const category = ["FE","BE","IOS","ANDROID","UIUX","PM"]
+  const [roleBtn, setRoleBtn] = useState();
+
   const navigate = useNavigate();
-  const RoleClickHandler = () => {
-    navigate("/question");
+  const RoleClickHandler = (role) => {
+      navigate("/question");
   }
 
+  // useEffect(() => {
+  //   const 
+  // })
   return (
     <>
       <LoginNav />
@@ -22,6 +28,9 @@ function SecondSelct() {
         <div>더 세분화된 직무별 질문을 확인할 수 있습니다. </div>
       </TitleRoldSelect>
       <RoleSmallButtonLayout>
+        {/* { roleBtn.map((i, index) => {
+
+        })} */}
         <Smallbutton onClick={RoleClickHandler}>ForntEnd</Smallbutton>
         <Smallbutton onClick={RoleClickHandler}>BackEnd</Smallbutton>
         <Smallbutton onClick={RoleClickHandler}>IOS<br/><strong>Developer</strong></Smallbutton>
