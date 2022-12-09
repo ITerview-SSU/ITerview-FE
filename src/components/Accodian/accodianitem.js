@@ -1,42 +1,3 @@
-// import AccordionWrapper from "./accodianwrapper";
-// import AccordionItem from './accodianitem';
-// import '../Accodian/accordian.css';
-
-
-// function Accodaian() {
-
-//   const data = [
-//     {
-//       "title": "질문이 무엇이 있을까요~?",
-//     },
-//     {
-//       "title": "질문이 무엇이 있을까요~?",
-//     },
-//     {
-//       "title": "질문이 무엇이 있을까요~?",
-//     },
-//     {
-//       "title": "질문이 무엇이 있을까요~?",
-//     }
-//   ];
-
-//   return (
-//     <div className="App">
-//       <div className="content">
-//         <div className="app-description">
-//         </div>
-//           <AccordionWrapper>
-//             {data.map((item, index) => (
-//               <AccordionItem key={index} index={index} title={item.title}/>
-//             ))}
-//           </AccordionWrapper>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Accodaian;
-
 import React, { useCallback } from "react";
 import styled from "styled-components";
 import { useRef } from 'react';
@@ -61,7 +22,7 @@ function Accodianitem(props) {
         parentRef.current.style.height = "0";
         parentRef.current.style.background = "white";
       } else {
-        parentRef.current.style.height = `${childRef.current.clientHeight}px`;
+        parentRef.current.style.height = "800px";
         parentRef.current.style.background = "lightgray";
       }
       setIsCollapse(!isCollapse);
@@ -81,7 +42,7 @@ function Accodianitem(props) {
       </Header>
       <ContentsWrapper ref={parentRef}>
         <Contents ref={childRef} >
-          <RecordView />
+          <RecordView/>
         </Contents>
       </ContentsWrapper>
     </Container>
@@ -142,6 +103,34 @@ const ArrowImgStyle = styled.img`
 const TitleStyle = styled.div`
   height: 46px;
   padding-top: 16px;
+`
+const BtnStyle = styled.button`
+  width: 132px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+
+  font-weight: 600;
+  font-size: 21.2105px;
+  line-height: 29px;
+
+
+  position: absolute;
+  left: 170px;
+`
+const BtnStyle2 = styled.button`
+  width: 132px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+
+  font-weight: 600;
+  font-size: 21.2105px;
+  line-height: 29px;
+
+
+  position: absolute;
+  right: 190px;
 `
 
 export default React.memo(Accodianitem);

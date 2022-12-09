@@ -18,3 +18,7 @@
       opacity: 0;
     }
   }
+  .react-record-webcam__controls-button {
+    width: 30px;
+    height: 10px;
+  }
