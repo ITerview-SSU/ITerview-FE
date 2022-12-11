@@ -3,9 +3,12 @@ import styled from 'styled-components';
 
 export const NavLoginLayout = styled.div`
     display: flex;
+    flex-direction: row;
     align-items: center;
-    padding-left: 118px;
     padding-top: 36px;
+
+    justify-content: center;
+    gap: 188px;
 `
 
 export const UserAndLogoutText = styled.div`
@@ -13,9 +16,7 @@ export const UserAndLogoutText = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    /* padding-right: 118px; */
-    margin-left: 188px;
+    
 `
 export const UserNickname = styled.div`
     width: 53px;

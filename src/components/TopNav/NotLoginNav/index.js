@@ -9,6 +9,7 @@ import SearchBar from '../../commons/SearchBar/SearchBar';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import axios from 'axios';
 import { BaseUrl } from '../../../privateKey';
+import styled from 'styled-components';
 
 function NotLoginNavBar() {
 
@@ -49,6 +50,18 @@ function NotLoginNavBar() {
     navigate("/signup");
   }
 
+  const onClickGoRolePage = () => {
+    navigate("/select/role");
+  }
+
+  const onClickGoCommonPage = () => {
+    navigate("/select");
+  }
+
+  const onClickGoMyPage = () => {
+    navigate("/mypage");
+  }
+
   return (
     <NavLayout>
       <NavLoginLayout>
@@ -76,8 +89,90 @@ function NotLoginNavBar() {
       </>)
       }
       </NavLoginLayout>
+      {user &&
+      <DropDown>
+      <SiteMap>
+      <SiteMapBtn onClick={onClickGoCommonPage}>공통별 질문</SiteMapBtn>
+      <Boundary style={{fontWeight:"500px", fontSize:"18px", lineHeight:"200.2%", color:"white"}}>|</Boundary>
+      <SiteMapBtn onClick={onClickGoRolePage}>직종별 질문</SiteMapBtn>
+      <Boundary style={{fontWeight:"500px", fontSize:"18px", lineHeight:"200.2%", color:"white"}}>|</Boundary>
+      <SiteMapBtn onClick={onClickGoMyPage}>마이페이지</SiteMapBtn>
+      </SiteMap>
+      <DropDownMenu>
+        <MenuLi>FrontEnd</MenuLi>
+        <MenuLi>BackEnd</MenuLi>
+        <MenuLi>IOS Developer</MenuLi>
+        <MenuLi>Android Developer</MenuLi>
+        <MenuLi>UI/UX Designer</MenuLi>
+        <MenuLi>Product Manager</MenuLi>
+      </DropDownMenu>
+      </DropDown> 
+}
     </NavLayout> 
   )
 }
 
 export default NotLoginNavBar;
+
+const SiteMap = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+
+  margin-top: 17px;
+`
+const SiteMapBtn = styled.button`
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 200.2%;
+
+  color: white;
+
+  border: none;
+  background-color: transparent;
+
+  :hover {
+    font-weight: 700;
+  }
+`
+const DropDownMenu = styled.li`
+  padding-top: 13px;
+  color: white;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  justify-content: center;
+  text-align: center;
+`
+
+const DropDown = styled.li`
+  z-index: 1;
+  list-style: none;
+  &:hover ${DropDownMenu} {
+  z-index: 1;
+  display: block;
+
+  position: absolute;
+  background-color: #303132;
+  width: 100%;
+  height: 170px;
+  }
+
+  ${DropDownMenu} {
+    z-index: 1;
+    display: none;
+    list-style: none;
+  }
+`
+const MenuLi = styled.li`
+  margin-bottom: 10px;
+
+  :hover {
+    font-weight: 700;
+  }
+`

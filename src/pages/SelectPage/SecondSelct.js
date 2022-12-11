@@ -5,6 +5,7 @@ import LoginNav from '../../components/TopNav/LoginNav/index';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import { useNavigate } from 'react-router-dom';
+import NotLoginNavBar from '../../components/TopNav/NotLoginNav/index';
 
 function SecondSelct() {
 
@@ -21,7 +22,7 @@ function SecondSelct() {
   // })
   return (
     <>
-      <LoginNav />
+      <NotLoginNavBar />
       <AnimationBar />
       <TitleRoldSelect>
         <div>원하는 직무를 선택해보세요. </div>

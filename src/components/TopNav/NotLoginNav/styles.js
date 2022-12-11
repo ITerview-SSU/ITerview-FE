@@ -3,7 +3,7 @@ import colors from '../../../styles/colors';
 
 export const NavLayout = styled.div`
     width: 100%;
-    height: 104px;
+    height: 147px;
     background-color: ${colors.black_100};
 `
 export const Logolayout = styled.div`
@@ -49,8 +49,9 @@ export const LogininButton = styled.button`
 `
 
 export const SignButtonLayout = styled.div`
+    margin-left: 400px;
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding-right: 118px;
+
+    justify-content: center;
+    align-items: center;
 `

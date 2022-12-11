@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import AnimationBar from '../../components/AnimationBar';
 import { useNavigate } from 'react-router-dom';
+import NotLoginNavBar from '../../components/TopNav/NotLoginNav/index';
 
 function FirstSelect() {
 
@@ -18,7 +19,7 @@ function FirstSelect() {
 
   return (
     <>
-      <LoginNav />
+      <NotLoginNavBar />
       <AnimationBar />
       <DiscribeFirstSelect>
         <div>공통별 질문은 직무에 관계없이 보편적으로 제시되는 질문을,</div>
