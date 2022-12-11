@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { RecordWebcam, useRecordWebcam } from "react-record-webcam";
 import './style.css';
 import styled from "styled-components";
+import Modal from "../../Modal/Modal";
+import Q from "../../../assets/Q..svg";
+// import { BaseUrl } from "../../../privateKey";
 
 const OPTIONS = {
   fileName: "test-filename",
@@ -13,8 +16,10 @@ const OPTIONS = {
   
 }
 
-export default function RecordView() {
+export default function RecordView(props, questionId) {
   const recordWebcam = useRecordWebcam(OPTIONS);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ModalQuestion, setModalQuestion] = useState([]);
   
   const getRecordingFile = async () => {
     const blob = recordWebcam.getRecording();
@@ -24,6 +29,14 @@ export default function RecordView() {
   const getBlob = async (blob: Blob | null) => {
     console.log({ blob });
   };
+
+  const onClickVideoModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const onClickCloseModal = () => {
+    setIsModalOpen((prev) => !prev);
+  }
 
   return (
     <div>
@@ -74,10 +87,32 @@ export default function RecordView() {
           >
             Download
           </RecorderBtnStyle>
+          {/* <RecorderBtnStyle
+                  disabled={recordWebcam.status !== "PREVIEW"}
+                  onClick={async () => {
+                    const blob = await recordWebcam.getRecording();
+                    getBlob(blob);
+                  }}
+                >
+                  Get blob
+          </RecorderBtnStyle> */}
           <RecorderBtnStyle2
+            disabled={
+              recordWebcam.status === "OPEN" ||
+              recordWebcam.status === "RECORDING" ||
+              recordWebcam.status === "ERROR" ||
+              recordWebcam.status === "기다려주세요..."
+            }
+            onClick={onClickVideoModal}
           >
             내 답변 보기
           </RecorderBtnStyle2>
+        {isModalOpen && <Modal key={questionId} closeModal={onClickCloseModal}>
+          <TitleFlex>
+          <img src={Q} style={{width:"42px", height:"44px"}}/>
+          <TitleStyle>{props.title}</TitleStyle>
+          </TitleFlex>
+          </Modal>}
         </BtnLayout>
         <video
           ref={recordWebcam.webcamRef}
@@ -96,7 +131,6 @@ export default function RecordView() {
         />
         <video
           ref={recordWebcam.previewRef}
-          src={Blob}
           video={true}
           audio={true}
           style={{
@@ -115,6 +149,61 @@ export default function RecordView() {
   );
 }
 
+const RecorderBtnStyle = styled.button`
+  width: 100px;
+  height: 40px;
+
+  background: linear-gradient(135.86deg, #9E3DFF 0%, #3840FF 100%);
+  box-shadow: 0px 0px 12.9193px rgba(0, 0, 0, 0.1);
+  border-radius: 49.0932px;
+
+  color: white;
+  font-size: 14px;
+
+  :disabled {
+    opacity: 60%;
+  }
+`
+const RecorderBtnStyle2 = styled.button`
+  width: 100px;
+  height: 40px;
+
+  background: linear-gradient(135.86deg, gray 0%, black 100%);
+  box-shadow: 0px 0px 12.9193px rgba(0, 0, 0, 0.1);
+  border-radius: 49.0932px;
+
+  color: white;
+  font-size: 14px;
+
+  :disabled {
+    opacity: 60%;
+  }
+`
+const BtnLayout = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+`
+const TitleStyle = styled.div`
+  height: 46px;
+  padding-top: 16px;
+  margin-left: 22px;
+
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 35px;
+`
+const TitleFlex = styled.div`
+  margin-left: 41px;
+  margin-top: 21px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
 
 
 // import React from 'react'
@@ -241,34 +330,3 @@ export default function RecordView() {
 // }
 
 // export default Recorder
-
-const RecorderBtnStyle = styled.button`
-  width: 100px;
-  height: 40px;
-
-  background: linear-gradient(135.86deg, #9E3DFF 0%, #3840FF 100%);
-  box-shadow: 0px 0px 12.9193px rgba(0, 0, 0, 0.1);
-  border-radius: 49.0932px;
-
-  color: white;
-  font-size: 14px;
-`
-const RecorderBtnStyle2 = styled.button`
-  width: 100px;
-  height: 40px;
-
-  background: linear-gradient(135.86deg, gray 0%, black 100%);
-  box-shadow: 0px 0px 12.9193px rgba(0, 0, 0, 0.1);
-  border-radius: 49.0932px;
-
-  color: white;
-  font-size: 14px;
-`
-const BtnLayout = styled.div`
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-
-  margin-top: 20px;
-  margin-bottom: 20px;
-`

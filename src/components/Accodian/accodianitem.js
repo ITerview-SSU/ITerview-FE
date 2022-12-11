@@ -7,7 +7,7 @@ import colors from '../../styles/colors';
 import QImg from '../../assets/Q..svg';
 import ArrowImg from '../../assets/ic_round-expand-more.svg';
 
-function Accodianitem(props) {
+function Accodianitem(props, questionId, questions) {
   const parentRef = useRef(null);
   const childRef = useRef(null);
   const [isCollapse, setIsCollapse] = useState(false);
@@ -42,7 +42,7 @@ function Accodianitem(props) {
       </Header>
       <ContentsWrapper ref={parentRef}>
         <Contents ref={childRef} >
-          <RecordView/>
+          <RecordView key={questionId} title={props.title}/>
         </Contents>
       </ContentsWrapper>
     </Container>
