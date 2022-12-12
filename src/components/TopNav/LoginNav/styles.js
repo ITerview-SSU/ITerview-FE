@@ -19,7 +19,7 @@ export const UserAndLogoutText = styled.div`
     
 `
 export const UserNickname = styled.div`
-    width: 53px;
+    width: fit-content;
     height: 25px;
 
     font-weight: 700;

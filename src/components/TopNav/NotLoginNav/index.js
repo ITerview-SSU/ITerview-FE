@@ -1,4 +1,4 @@
-import Reac, {useState} from 'react'
+import Reac, {useState, useEffect} from 'react'
 import { Logolayout, NavLayout, Logo2Layout, SignupButton, LogininButton, SignButtonLayout } from './styles';
 import Logo from "../../../assets/Logo.svg"
 import Logo2 from "../../../assets/Logo_2.svg"
@@ -17,6 +17,25 @@ function NotLoginNavBar() {
   const [user, setUser] = useRecoilState(userState);
 
   const navigate = useNavigate();
+  const accessToken = localStorage.getItem('accessToken');
+  const [isNikname, setIsNikname] = useState("");
+
+  useEffect(() => {
+    if (user !== null)
+      axios.get(`${BaseUrl}/auth/info`,{
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${accessToken}`
+      },})
+      .then ((res) => {
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${res.payload.accessToken}`
+        console.log(res.data);
+        setIsNikname(res.data.username);
+      })
+      .catch ((err) => {
+        console.log(err);
+      })
+  })
 
   const logoutHandler = () => {
     const refreshToken = localStorage.getItem('refreshToken');
@@ -94,8 +113,10 @@ function NotLoginNavBar() {
       <>
       <SearchBar />
       <UserAndLogoutText>
-          <UserNickname>유하은</UserNickname>
+          <NiknameFlex>
+          <UserNickname>{isNikname}</UserNickname>
           <Nim>님</Nim>
+          </NiknameFlex>
           <Boundary>|</Boundary>
           <LogoutText onClick={logoutHandler}>로그아웃</LogoutText>
       </UserAndLogoutText>
@@ -194,4 +215,9 @@ const MenuLi = styled.li`
   :hover {
     font-weight: 700;
   }
+`
+const NiknameFlex = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 `
