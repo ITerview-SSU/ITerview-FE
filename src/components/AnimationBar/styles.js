@@ -30,6 +30,7 @@ export const FlowText = styled.div`
     height: 100%;
     white-space: nowrap;
     overflow: hidden;
+    justify-content: center;
 `
 
 export const TextDiv = styled.div`
@@ -47,10 +48,12 @@ export const ITStyle = styled.div`
     color: ${colors.pointColor_1};
     display: inline-block;
     padding:0 3px;
+    font-family: "Gotham";
 `
 
 export const ITStyle2 = styled.div`
     color: ${colors.pointColor_2};
+    font-family: "Gotham";
     padding-left: 3px;
     padding-right: 0px;
     display: inline-block;
@@ -60,8 +63,10 @@ export const TerviewStyle = styled.div`
     padding-left: 0px;
     padding-right: 3px;
     display: inline-block;
+    font-family: "Gotham";
 `
 
 export const OneText = styled.div`
+    padding-top: 6px;
     padding-right: 26.66px;
 `

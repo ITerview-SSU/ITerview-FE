@@ -211,10 +211,11 @@ const DropDown = styled.li`
 `
 const MenuLi = styled.li`
   margin-bottom: 10px;
-
+  color: #C0C0C0;
   :hover {
-    font-weight: 700;
+    color: white;
   }
+  font-family: "Gotham";
 `
 const NiknameFlex = styled.div`
   display: flex;
