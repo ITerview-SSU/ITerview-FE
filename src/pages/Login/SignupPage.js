@@ -10,6 +10,7 @@ import {SignupButtonStyle} from '../../components/commons/Button/SignupButton';
 import { useState } from 'react';
 import { BaseUrl } from '../../privateKey';
 import { requestSignup } from '../../apis/index';
+import { useNavigate } from 'react-router-dom';
 
 
 function SignupPage() {
@@ -17,6 +18,7 @@ function SignupPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState('');
+    const navigate = useNavigate();
 
     const Btndisabled = username && email && (password === passwordConfirm);
 
@@ -45,7 +47,7 @@ function SignupPage() {
                 setEmail("");
                 setPassword("");
                 alert("회원가입 성공!");
-                
+                navigate("/login");
                 } catch (err) {
                     console.log(err);
                     alert("회원가입 실패")
