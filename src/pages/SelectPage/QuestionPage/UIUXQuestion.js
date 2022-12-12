@@ -66,7 +66,7 @@ function UIUXQuesiton() {
 export default UIUXQuesiton
 
 const QuestionPageTitle = styled.div`
-  width: 400px;
+  width: 500px;
   height: 73px;
   font-family: 'Gotham';
   font-weight: 700;

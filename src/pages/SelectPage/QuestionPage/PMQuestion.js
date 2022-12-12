@@ -66,7 +66,7 @@ function PMQuesiton() {
 export default PMQuesiton
 
 const QuestionPageTitle = styled.div`
-  width: 500px;
+  width: 600px;
   height: 73px;
   font-family: 'Gotham';
   font-weight: 700;

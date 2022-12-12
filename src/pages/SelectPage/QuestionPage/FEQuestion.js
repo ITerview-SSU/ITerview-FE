@@ -66,7 +66,7 @@ function FEQuesiton() {
 export default FEQuesiton
 
 const QuestionPageTitle = styled.div`
-  width: 300px;
+  width: 400px;
   height: 73px;
   font-family: 'Gotham';
   font-weight: 700;
