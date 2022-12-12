@@ -11,7 +11,7 @@ function FirstSelect() {
 
   const navigate = useNavigate();
   const CommonSelectClickHandler = () => {
-    navigate("/question");
+    navigate("/question/common");
   }
   const RoleSelectClickHandler = () => {
     navigate("/select/role");

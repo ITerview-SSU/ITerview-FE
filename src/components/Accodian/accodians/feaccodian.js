@@ -1,12 +1,11 @@
 import React from "react";
-import Accodianitem from "./accodianitem";
+import Accodianitem from "../accodianitem";
 import styled from 'styled-components';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { BaseUrl } from '../../privateKey';
-import { roleCategory } from "../category";
+import { BaseUrl } from '../../../privateKey';
 
-export default function Accodian() {
+export default function FEAccodian() {
 
     const category = ["FE","BE","IOS","ANDROID","UIUX","PM"];
 
@@ -14,7 +13,7 @@ export default function Accodian() {
 
     useEffect(() => {
         try {
-            axios.get(`${BaseUrl}/api/questions?category=FE`)
+            axios.get(`${BaseUrl}/api/questions?category=2`)
                 .then((res) => {
                     setIsQuestion(res.data);
                     console.log(res.data);

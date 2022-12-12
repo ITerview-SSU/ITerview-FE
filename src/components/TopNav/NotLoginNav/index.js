@@ -55,11 +55,30 @@ function NotLoginNavBar() {
   }
 
   const onClickGoCommonPage = () => {
-    navigate("/select");
+    navigate("/question/common");
   }
 
   const onClickGoMyPage = () => {
     navigate("/mypage");
+  }
+
+  const onClickFEPage = () => {
+    navigate("/question/fe");
+  }
+  const onClickBEPage = () => {
+    navigate("/question/be");
+  }
+  const onClickIOSPage = () => {
+    navigate("/question/ios");
+  }
+  const onClickAndroidPage = () => {
+    navigate("/question/android");
+  }
+  const onClickUIUXPage = () => {
+    navigate("/question/uiux");
+  }
+  const onClickPMPage = () => {
+    navigate("/question/pm");
   }
 
   return (
@@ -99,12 +118,12 @@ function NotLoginNavBar() {
       <SiteMapBtn onClick={onClickGoMyPage}>마이페이지</SiteMapBtn>
       </SiteMap>
       <DropDownMenu>
-        <MenuLi>FrontEnd</MenuLi>
-        <MenuLi>BackEnd</MenuLi>
-        <MenuLi>IOS Developer</MenuLi>
-        <MenuLi>Android Developer</MenuLi>
-        <MenuLi>UI/UX Designer</MenuLi>
-        <MenuLi>Product Manager</MenuLi>
+        <MenuLi onClick={onClickFEPage}>Front-End</MenuLi>
+        <MenuLi onClick={onClickBEPage}>Back-End</MenuLi>
+        <MenuLi onClick={onClickIOSPage}>IOS</MenuLi>
+        <MenuLi onClick={onClickAndroidPage}>Android</MenuLi>
+        <MenuLi onClick={onClickUIUXPage}>UI/UX Designer</MenuLi>
+        <MenuLi onClick={onClickPMPage}>Product Manager</MenuLi>
       </DropDownMenu>
       </DropDown> 
 }

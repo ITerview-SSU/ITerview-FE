@@ -1,25 +1,65 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import AnimationBar from '../../components/AnimationBar';
 import { Smallbutton } from '../../components/commons/Button/styles';
 import LoginNav from '../../components/TopNav/LoginNav/index';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import NotLoginNavBar from '../../components/TopNav/NotLoginNav/index';
+import { BaseUrl } from '../../privateKey';
+import axios from 'axios';
 
 function SecondSelct() {
 
-  const category = ["FE","BE","IOS","ANDROID","UIUX","PM"]
-  const [roleBtn, setRoleBtn] = useState();
+  const category = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ]
+
+  const [roleBtn, setRoleBtn] = useState([]);
+  const [roleId, setRoleId] = useState();
 
   const navigate = useNavigate();
-  const RoleClickHandler = (role) => {
-      navigate("/question");
+  const feClickHandler = (role) => {
+      navigate("/question/fe");
+  }
+
+  const beClickHandler = (role) => {
+    navigate("/question/be");
+  }
+const iosClickHandler = (role) => {
+  navigate("/question/ios");
+  }
+const androidClickHandler = (role) => {
+  navigate("/question/android");
+  }
+const uiuxClickHandler = (role) => {
+  navigate("/question/uiux");
+  }
+const pmClickHandler = (role) => {
+  navigate("/question/pm");
   }
 
   // useEffect(() => {
-  //   const 
-  // })
+  //   try {
+  //     axios.get(`${BaseUrl}/api/questions?category=${category}`)
+  //     .then((res) => {
+  //       console.log(res);
+  //       return res.data;
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },[])
+
   return (
     <>
       <NotLoginNavBar />
@@ -29,15 +69,15 @@ function SecondSelct() {
         <div>더 세분화된 직무별 질문을 확인할 수 있습니다. </div>
       </TitleRoldSelect>
       <RoleSmallButtonLayout>
-        {/* { roleBtn.map((i, index) => {
-
+        {/* { roleBtn && roleBtn.questions?.map((questions, categoryIds) => {
+          <Smallbutton key={categoryIds} title={questions.categories}>{questions.categories}</Smallbutton>
         })} */}
-        <Smallbutton onClick={RoleClickHandler}>ForntEnd</Smallbutton>
-        <Smallbutton onClick={RoleClickHandler}>BackEnd</Smallbutton>
-        <Smallbutton onClick={RoleClickHandler}>IOS<br/><strong>Developer</strong></Smallbutton>
-        <Smallbutton onClick={RoleClickHandler}>Android Developer</Smallbutton>
-        <Smallbutton onClick={RoleClickHandler}>UI/UX<br/><strong>Designer</strong></Smallbutton>
-        <Smallbutton onClick={RoleClickHandler}>Product<br/><strong>Manager</strong></Smallbutton>
+        <Smallbutton onClick={feClickHandler}>Front-End</Smallbutton>
+        <Smallbutton onClick={beClickHandler}>Back-End</Smallbutton>
+        <Smallbutton onClick={iosClickHandler}>IOS</Smallbutton>
+        <Smallbutton onClick={androidClickHandler}>Android</Smallbutton>
+        <Smallbutton onClick={uiuxClickHandler}>UI/UX<br/><strong>Designer</strong></Smallbutton>
+        <Smallbutton onClick={pmClickHandler}>Product<br/><strong>Manager</strong></Smallbutton>
       </RoleSmallButtonLayout>
     </>
   )
