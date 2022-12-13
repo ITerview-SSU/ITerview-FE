@@ -31,8 +31,8 @@ export default function PMAccodian() {
         <AccodianBottom>
             <AccodianLayout>
                 {isQuestion && 
-                isQuestion.questions?.map((questions, questionId) => (
-                <Accodianitem key={questionId} title={questions.questionString}/>
+                isQuestion.questions?.map((questions) => (
+                <Accodianitem questionkey={questions.questionId} title={questions.questionString}/>
                 ))}
             </AccodianLayout>
         </AccodianBottom>
