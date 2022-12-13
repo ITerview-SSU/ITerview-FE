@@ -54,5 +54,5 @@
     "eslint": "^8.24.0",
     "prettier": "^2.7.1"
   },
-  "proxy": "http://ec2-52-78-126-242.ap-northeast-2.compute.amazonaws.com:8080"
+  "proxy": "http://52.78.126.242:8080"
 }
