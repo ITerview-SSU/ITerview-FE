@@ -72,12 +72,12 @@ const pmClickHandler = (role) => {
         {/* { roleBtn && roleBtn.questions?.map((questions, categoryIds) => {
           <Smallbutton key={categoryIds} title={questions.categories}>{questions.categories}</Smallbutton>
         })} */}
-        <Smallbutton onClick={feClickHandler}>Front-End</Smallbutton>
-        <Smallbutton onClick={beClickHandler}>Back-End</Smallbutton>
-        <Smallbutton onClick={iosClickHandler}>IOS</Smallbutton>
-        <Smallbutton onClick={androidClickHandler}>Android</Smallbutton>
-        <Smallbutton onClick={uiuxClickHandler}>UI/UX<br/><strong>Designer</strong></Smallbutton>
-        <Smallbutton onClick={pmClickHandler}>Product<br/><strong>Manager</strong></Smallbutton>
+        <Smallbutton onClick={feClickHandler} style={{paddingTop:"20px"}}>Front-End</Smallbutton>
+        <Smallbutton onClick={beClickHandler} style={{paddingTop:"20px"}}>Back-End</Smallbutton>
+        <Smallbutton onClick={iosClickHandler} style={{paddingTop:"30px"}}>IOS</Smallbutton>
+        <Smallbutton onClick={androidClickHandler} style={{paddingTop:"20px"}}>Android</Smallbutton>
+        <Smallbutton onClick={uiuxClickHandler} style={{paddingTop:"20px"}}>UI/UX<br/><strong>Designer</strong></Smallbutton>
+        <Smallbutton onClick={pmClickHandler} style={{paddingTop:"20px"}}>Product<br/><strong>Manager</strong></Smallbutton>
       </RoleSmallButtonLayout>
     </>
   )
