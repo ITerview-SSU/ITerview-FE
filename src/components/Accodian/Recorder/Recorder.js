@@ -4,29 +4,48 @@ import './style.css';
 import styled from "styled-components";
 import Modal from "../../Modal/Modal";
 import Q from "../../../assets/Q..svg";
-// import { BaseUrl } from "../../../privateKey";
+import axios from "axios";
+import { BaseUrl } from "../../../privateKey";
 
-const OPTIONS = {
-  fileName: "test-filename",
-  mimeType: "video/webm",
-  width: 1920,
-  height: 1080,
-  disableLogs: true,
-  video: true,
-  
-}
+export default function RecordView(props) {
 
-export default function RecordView(props, questionId) {
+  const [isUrl, setIsUrl] = useState("");
+
+  let today = new Date();
+  let time = {
+      year: today.getFullYear(),  //현재 년도
+      month: today.getMonth() + 1, // 현재 월
+      date: today.getDate(), // 현제 날짜
+      hours: today.getHours(), //현재 시간
+      minutes: today.getMinutes(), //현재 분
+  };
+
+  let timestring = `${time.year}-${time.month}-${time.date}-${time.hours}-${time.minutes}`;
+
+  const OPTIONS = {
+    fileName: timestring,
+    filename: timestring + ".mp4",
+    mimeType: "video/webm",
+    width: 1920,
+    height: 1080,
+    disableLogs: true,
+    video: true,
+    
+  }
+
   const recordWebcam = useRecordWebcam(OPTIONS);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ModalQuestion, setModalQuestion] = useState([]);
+  const [filename, setFilename] = useState(`${timestring}.webm`);
+  const [questionId, setQuestionId] = useState(props.questionkey);
   
   const getRecordingFile = async () => {
     const blob = recordWebcam.getRecording();
+
     console.log({ blob });
   };
 
-  const getBlob = async (blob: Blob | null) => {
+  const getBlob = async (blob) => {
     console.log({ blob });
   };
 
@@ -38,6 +57,7 @@ export default function RecordView(props, questionId) {
     setIsModalOpen((prev) => !prev);
   }
 
+  const accessToken = localStorage.getItem('accessToken');
   return (
     <div>
 <div className="demo-section">
@@ -84,6 +104,7 @@ export default function RecordView(props, questionId) {
           <RecorderBtnStyle
             disabled={recordWebcam.status !== "PREVIEW"}
             onClick={recordWebcam.download}
+            key={questionId}
           >
             Download
           </RecorderBtnStyle>
@@ -103,14 +124,34 @@ export default function RecordView(props, questionId) {
               recordWebcam.status === "ERROR" ||
               recordWebcam.status === "기다려주세요..."
             }
-            onClick={onClickVideoModal}
+            onClick={async () => {
+              const blob = await recordWebcam.getRecording({type: "video/webm"});
+              getBlob(blob); 
+              await axios({
+                url: `${BaseUrl}/uploadurl`,
+                method: "post",
+                data: JSON.stringify({
+                 filename,
+                 questionId
+                }),
+                headers: {
+                  "Authorization": `Bearer ${accessToken}`
+                }
+              }).then((res) => {
+                console.log(res);
+                setIsUrl(res.data.preSignedUrl);
+              }).catch((err) => {
+                console.log(err);
+              })
+              onClickVideoModal();}}
           >
             내 답변 보기
           </RecorderBtnStyle2>
-        {isModalOpen && <Modal key={questionId} closeModal={onClickCloseModal}>
+        {isModalOpen && <Modal closeModal={onClickCloseModal}>
           <TitleFlex>
           <img src={Q} style={{width:"42px", height:"44px"}}/>
           <TitleStyle>{props.title}</TitleStyle>
+          
           </TitleFlex>
           </Modal>}
         </BtnLayout>
