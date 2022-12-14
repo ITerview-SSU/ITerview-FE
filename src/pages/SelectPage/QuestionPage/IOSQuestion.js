@@ -19,7 +19,7 @@ function IOSQuesiton() {
   const [iscount, setIsCount] = useState([]);
   const navigate = useNavigate();
   const RandomClickHandler = (role) => {
-      navigate("/random");
+      navigate("/random/ios");
   }
 
   useEffect(() => {

@@ -15,16 +15,18 @@ import FEAccodian from '../../../components/Accodian/accodians/feaccodian';
 
 function FEQuesiton() {
 
-  const [roleId, setRoleId] = useState();
+  // const [roleId, setRoleId] = useState();
   const [iscount, setIsCount] = useState([]);
   const navigate = useNavigate();
-  const RandomClickHandler = (role) => {
-      navigate("/random");
+  const RandomClickHandler = (roleId) => {
+      navigate("/random/fe");
   }
+
+  const roleId = 2;
 
   useEffect(() => {
     try {
-      axios.get(`${BaseUrl}/api/questions?category=2`)
+      axios.get(`${BaseUrl}/api/questions?category=${roleId}`)
         .then((res) => {
           console.log(res);
           setIsCount(res.data.questions.length);

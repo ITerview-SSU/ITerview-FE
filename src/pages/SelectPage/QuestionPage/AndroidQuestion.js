@@ -19,7 +19,7 @@ function AndroidQuesiton() {
   const [iscount, setIsCount] = useState([]);
   const navigate = useNavigate();
   const RandomClickHandler = (role) => {
-      navigate("/random");
+      navigate("/random/android");
   }
 
   useEffect(() => {

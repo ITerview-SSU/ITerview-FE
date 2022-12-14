@@ -8,10 +8,6 @@ import SignupPage from './pages/Login/SignupPage';
 import FirstSelect from './pages/SelectPage/FirstSelect';
 import SecondSelct from './pages/SelectPage/SecondSelct';
 import Mypage from './pages/Mypage/Mypage';
-import RecordView from './components/Accodian/Recorder/Recorder';
-import LoginNav from './components/TopNav/LoginNav/index';
-import Accodian from './components/Accodian/accodians/accodian';
-import Random from './pages/Random';
 import QuesitonPage from './pages/SelectPage/QuestionPage/QuesitonPage';
 import FEQuesiton from './pages/SelectPage/QuestionPage/FEQuestion';
 import BEQuesiton from './pages/SelectPage/QuestionPage/BEQuestion';
@@ -20,6 +16,13 @@ import AndroidQuesiton from './pages/SelectPage/QuestionPage/AndroidQuestion';
 import UIUXQuesiton from './pages/SelectPage/QuestionPage/UIUXQuestion';
 import PMQuesiton from './pages/SelectPage/QuestionPage/PMQuestion';
 import SearchPage from './pages/Search/SearchPage';
+import BERandom from './pages/Random/BERandom';
+import FERandom from './pages/Random/FERandom';
+import AndroidRandom from './pages/Random/AndroidRandom';
+import IosRandom from './pages/Random/IOSRandom';
+import UIUXRandom from './pages/Random/UIUXRandom';
+import PMRandom from './pages/Random/PMRandom';
+import Random from './pages/Random/Random';
 
 
 function App() {
@@ -42,6 +45,12 @@ function App() {
           <Route exact={true} path="/question/pm" element={<PMQuesiton />}></Route>
           <Route exact={true} path="/mypage" element={<Mypage />}></Route>
           <Route exact={true} path="/random" element={<Random />}></Route>
+          <Route exact={true} path="/random/fe" element={<FERandom />}></Route>
+          <Route exact={true} path="/random/be" element={<BERandom />}></Route>
+          <Route exact={true} path="/random/android" element={<AndroidRandom />}></Route>
+          <Route exact={true} path="/random/ios" element={<IosRandom />}></Route>
+          <Route exact={true} path="/random/uiux" element={<UIUXRandom />}></Route>
+          <Route exact={true} path="/random/pm" element={<PMRandom />}></Route>
           <Route exact={true} path="/search" element={<SearchPage />}></Route>
         </Routes>
         <Footer />
