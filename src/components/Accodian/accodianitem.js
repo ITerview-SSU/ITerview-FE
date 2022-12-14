@@ -42,7 +42,7 @@ function Accodianitem(props, questionId, questions) {
       </Header>
       <ContentsWrapper ref={parentRef}>
         <Contents ref={childRef} >
-          <RecordView key={questionId} title={props.title}/>
+          <RecordView questionkey={props.questionkey} title={props.title}/>
         </Contents>
       </ContentsWrapper>
     </Container>
