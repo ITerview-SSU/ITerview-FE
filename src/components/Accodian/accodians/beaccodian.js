@@ -7,8 +7,6 @@ import { BaseUrl } from '../../../privateKey';
 
 export default function BEAccodian() {
 
-    const category = ["FE","BE","IOS","ANDROID","UIUX","PM"];
-
     const [isQuestion, setIsQuestion] = useState([]);
 
     useEffect(() => {

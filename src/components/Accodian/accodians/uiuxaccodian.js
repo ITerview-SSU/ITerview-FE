@@ -7,8 +7,6 @@ import { BaseUrl } from '../../../privateKey';
 
 export default function UIUXAccodian() {
 
-    const category = ["FE","BE","IOS","ANDROID","UIUX","PM"];
-
     const [isQuestion, setIsQuestion] = useState([]);
 
     useEffect(() => {

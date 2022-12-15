@@ -7,8 +7,6 @@ import { BaseUrl } from '../../../privateKey';
 
 export default function Accodian() {
 
-    const category = ["FE","BE","IOS","ANDROID","UIUX","PM"];
-
     const [isQuestion, setIsQuestion] = useState([]);
 
     useEffect(() => {

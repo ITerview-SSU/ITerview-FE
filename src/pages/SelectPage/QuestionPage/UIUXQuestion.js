@@ -1,11 +1,8 @@
 import React from 'react'
-import Accodian from '../../../components/Accodian/accodians/accodian'
 import AnimationBar from '../../../components/AnimationBar'
-import LoginNav from '../../../components/TopNav/LoginNav'
 import styled from 'styled-components';
 import colors from '../../../styles/colors';
 import { useEffect, useState } from 'react';
-import { requestRole } from '../../../apis';
 import axios from 'axios';
 import { BaseUrl } from '../../../privateKey';
 import Suffle from "../../../assets/shuffle.svg";
@@ -15,7 +12,6 @@ import UIUXAccodian from '../../../components/Accodian/accodians/uiuxaccodian';
 
 function UIUXQuesiton() {
 
-  const [roleId, setRoleId] = useState();
   const [iscount, setIsCount] = useState([]);
   const navigate = useNavigate();
   const RandomClickHandler = (role) => {
@@ -50,7 +46,7 @@ function UIUXQuesiton() {
             <div>질문을 선택해 질문에 대한 답을 준비해보세요.</div>
             <div>동영상 녹화를 통해 면접 영상을 확인할 수 있습니다.</div>
           </DescribeStyle>
-          <RandomButton onClick={RandomClickHandler}><img src={Suffle}></img> 랜덤 질문 테스트</RandomButton>
+          <RandomButton onClick={RandomClickHandler}><img src={Suffle} alt="shuffle"></img> 랜덤 질문 테스트</RandomButton>
           </div>
           <CountLayout>
           <CountText>{iscount}</CountText>
