@@ -48,7 +48,7 @@ function Random() {
     for (let i = 1; i < isRandomQuestion.length; i++) {
       // setIsTitle(isRandomQuestion[i].questionString);
       // console.log(isTitle);
-      if(isNum == i) {
+      if(isNum === i) {
       setIsTitle(isRandomQuestion[i].questionString);
       console.log(isTitle);
       console.log(isNum);

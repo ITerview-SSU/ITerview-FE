@@ -8,7 +8,7 @@ export const ModalLayout = styled.div`
     transform: translate(-50%, -50%);
     /* max-height: 50%; */
     width: 1204px;
-    height: 872px;
+    height: 700px;
     box-shadow: 0px 0px 12.92px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     background: white;
