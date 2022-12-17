@@ -56,6 +56,8 @@ import { BaseUrl } from "../privateKey";
     }
   }
 
-  const instance = axios.create({ baseURL: BaseUrl, withCredentials: true });
+  const instance = axios.create({ baseURL: BaseUrl});
 
-  export const requestRole = (questionId) => instance.get(`/api/questions?category=${questionId}`);
+  export const requestRole = (roleId) => instance.get(`/api/questions?category=${roleId}`);
+
+  export const requestSearch = (search) => instance.get(`/api/search?keyword=${search}`);
