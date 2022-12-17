@@ -48,6 +48,7 @@ function LoginPage() {
                     const { accessToken } = res.data;
                     axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
                     localStorage.setItem('refreshToken', res.data['refreshToken']);
+                    localStorage.setItem('accessToken', res.data['accessToken']);
                     setEmail("");
                     setPassword("");
                     setUser(res.data);
