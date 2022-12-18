@@ -14,19 +14,27 @@ const SearchPage = () => {
   const result = location.state.searchResult;
   // const [count, setCount] = useState(result);
     
-
   console.log(result);
   return (
     <>
         <NotLoginNavBar />
         <AnimationBar />
-
         <>
         <SearchTitle>"{search}" 검색결과</SearchTitle>
-        <Tablist/>
         { 
-        result.questions?.length === 0 ?
+        result.questions?.length !== 0 ?
         <>
+        <Tablist result={result}/>
+        <div style={{margin:"0 auto", marginBottom: "362px"}}>
+        {/* <CountLayout>
+          <CountText>{result.length}</CountText>
+          <CountDiv>개의 질문</CountDiv>
+        </CountLayout> */}
+        </div>
+        </>
+        :
+        <>
+        <Tablist resultkey={result}/>
         <img src={X} style={{width: "28px", height: "28px", margin: "0 auto", textAlign:"center", marginTop:"18px", marginBottom:"28px"}}/>
         <div style={{display: "flex", flexDirection:"row", fontWeight:"600", fontSize:"26px", lineHeight:"35px", margin: "0 auto", textAlign:"center", marginBottom:"28px"}}>
         <div style={{color: "#DB5752"}}>"{search}"</div>
@@ -35,23 +43,14 @@ const SearchPage = () => {
         <div style={{margin: "0 auto", textAlign:"center", color:"#ACADAD", fontWeight:"600", fontSize:"21px", lineHeight:"180.2%"}}>단어의 철자가 정확한지 확인해보시고</div>
         <div style={{margin: "0 auto", textAlign:"center", color:"#ACADAD", fontWeight:"600", fontSize:"21px", lineHeight:"180.2%", marginBottom:"700px"}}>다른 검색어를 입력해 보세요</div>
         </>
-        :
-        <>
-        <div style={{margin:"0 auto", marginBottom: "362px"}}>
-        <CountLayout>
-          <CountText>{result.questions.length}</CountText>
-          <CountDiv>개의 질문</CountDiv>
-        </CountLayout>
-        {result.questions?.map((questions) => (
-          <>
-          <Accodianitem questionkey={questions.questionId} title={questions.questionString}/>
-          <div style={{marginBottom:"26px"}}></div>
-          </>
-        ))}
-        </div>
-        </> 
         }
         </>
+                            {/* {result.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 2} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))} */}
     </>
   )
 }

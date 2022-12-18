@@ -2,13 +2,19 @@ import React from "react";
 import { useState } from "react";
 import "./TabList.css";
 import styled from 'styled-components';
+import Accodianitem from "../Accodian/accodianitem";
 
-function Tablist() {
+function Tablist(result, questions, categoryIds) {
     const [toggleState, setToggleState] = useState(1);
+    const [questionArr, setQuestionArr] = useState(result?.result);
 
     const toggleTab = (index) => {
         setToggleState(index);
     };
+
+    console.log(questionArr);
+
+
 
     return (
         <TabListLayout>
@@ -42,37 +48,88 @@ function Tablist() {
             <>
                 <div className="content-tabs">
                     <div className={toggleState === 1 ? "content  active-content" : "content"}>
-                        
+                    { questionArr.length == 0 ?
+                    <>
+                    </>
+                    :
+                        questionArr.questions?.map((questions) => (
+                        <>
+                        <Accodianitem questionkey={questions} title={questions.questionString}/>
+                        <div style={{marginBottom:"26px"}}></div>
+                        </>
+                        ))
+                    }
                     </div>
 
-                    <div className={toggleState === 2 ? "content  active-content" : "content"}>
-                        
+                    <div categoryIds={1} className={toggleState === 2 ? "content  active-content" : "content"}>
+                    {questionArr.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 1} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))}
                     </div>
 
                     <div className={toggleState === 3 ? "content  active-content" : "content"}>
-                        
+                    {questionArr.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 1} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))}
                     </div>
 
                     <div className={toggleState === 4 ? "content  active-content" : "content"}>
-                        
+                    {questionArr.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 1} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))}
                     </div>
 
                     <div className={toggleState === 5 ? "content  active-content" : "content"}>
-                        
+                    {questionArr.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 1} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))}
                     </div>
 
                     <div className={toggleState === 6 ? "content  active-content" : "content"}>
-                        
+                    {questionArr.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 1} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))}
                     </div>
 
                     <div className={toggleState === 7 ? "content  active-content" : "content"}>
-                        
+                    {questionArr.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 1} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))}
                     </div>
 
                     <div className={toggleState === 8 ? "content  active-content" : "content"}>
-                        
+                    {questionArr.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.categoryIds === 1} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))}
                     </div>
                 </div>
+                {/* {result.questions?.map((questions) => (
+                    <>
+                    <Accodianitem questionkey={questions.questionId} title={questions.questionString}/>
+                    <div style={{marginBottom:"26px"}}></div>
+                    </>
+                    ))} */}
             </>
         </TabListLayout>
     );
@@ -90,9 +147,15 @@ const TabDiv = styled.div`
 
 const TabListLayout = styled.div`
     margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
     top: 0;
     margin-top: 50px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
     z-index: 0;
 
     filter: drop-shadow(0px 0px 12.92px rgba(0, 0, 0, 0.1));

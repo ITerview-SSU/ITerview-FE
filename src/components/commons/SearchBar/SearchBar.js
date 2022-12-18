@@ -3,7 +3,6 @@ import { StyleSearchBar, MagnifierImg, SearchBoxStyle } from './styles';
 import Magnifier from "../../../assets/magnifier.svg";
 import { requestSearch } from '../../../apis/index';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 
 const SearchBar = () => {
 
@@ -15,13 +14,14 @@ const SearchBar = () => {
     console.log(search)
     const input = useRef();
 
+
     const searchQuery = (query) => {
         if (query === "") return;
         try {
             requestSearch(query)
                 .then((res) => {
-                    if (res.data === []) setIsSuccess(false);
-                    else setIsSuccess(true);
+                    // if (res.data === []) setIsSuccess(false);
+                    // else setIsSuccess(true);
 
                     setResult(res.data);
                     console.log(search);
@@ -37,10 +37,15 @@ const SearchBar = () => {
         }
     };
 
+
     const onChangeSearch = (e) => {
-        e.preventDefault();
         setSearch(e.target.value);
     }
+
+    // useEffect(() => {
+    //     setResult();
+    //     setSearch();
+    // })
 
     // const onClickSearchHandler = () => {
     //     navigate("/search");
@@ -75,50 +80,10 @@ const SearchBar = () => {
                 </StyleSearchBar>
                 <MagnifierImg src={Magnifier}></MagnifierImg>
             </SearchBoxStyle>
-            {search !== "" && isSuccess && result.length > 0 ?
-            <>
-            <hr style={{ width: "95%", height: "0.5px", border: `0.5px solid black` }} />
-                    <SearchListWrapper>
-                        {result.map((questions, questionId) => {
-                            return (
-                                <li
-                                    key={questionId}
-                                    onClick={() => {
-                                        setResult([]);
-
-                                        setSearch("");
-                                    }}
-                                >
-                                </li>
-                            );
-                        })}
-                    </SearchListWrapper>
-            </>
-            :
-            null
-            }
+            {search !== "" && isSuccess && result.length > 0 }
             
         </>
     );
 };
 
 export default SearchBar
-
-const SearchListWrapper = styled.ul`
-    width: 85%;
-    list-style: none;
-    max-height: 6rem;
-    margin: 0 auto;
-    border-radius: 0 0 4px 4px;
-    overflow-y: scroll;
-    li {
-        font-size: 13px;
-        padding: 6px;
-        font-weight: 400;
-        
-        &:active {
-            filter: brightness(90%);
-         
-        }
-    }
-`;
