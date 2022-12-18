@@ -18,9 +18,10 @@ export default function RecordView(props) {
       date: today.getDate(), // 현제 날짜
       hours: today.getHours(), //현재 시간
       minutes: today.getMinutes(), //현재 분
+      seconds: today.getSeconds(), //현재 초
   };
 
-  let timestring = `${time.year}-${time.month}-${time.date}-${time.hours}-${time.minutes}`;
+  let timestring = `${time.year}${time.month}${time.date}${time.hours}${time.minutes}${time.seconds}`;
 
   const OPTIONS = {
     fileName: timestring,
@@ -135,11 +136,23 @@ export default function RecordView(props) {
                  questionId
                 }),
                 headers: {
+                  "Content-Type": "application/json; chaerset=utf-8",
                   "Authorization": `Bearer ${accessToken}`
                 }
               }).then((res) => {
                 console.log(res);
                 setIsUrl(res.data.preSignedUrl);
+                axios({
+                  url: `${isUrl}`,
+                  method: "put",
+                  headers: {
+                    "Content-Type": "video/webm"
+                  }
+                }).then((res) => {
+                  console.log(res);
+                }).catch((err) => {
+                  console.log(err);
+                })
               }).catch((err) => {
                 console.log(err);
               })
