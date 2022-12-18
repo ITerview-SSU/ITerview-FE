@@ -101,6 +101,7 @@ const ArrowImgStyle = styled.img`
   left: 1130px;
 `
 const TitleStyle = styled.div`
+  width: 1040px;
   height: 46px;
   padding-top: 16px;
 `
