@@ -39,6 +39,7 @@ export default function RecordView(props) {
   const [ModalQuestion, setModalQuestion] = useState([]);
   const [filename, setFilename] = useState(`${timestring}.webm`);
   const [questionId, setQuestionId] = useState(props.questionkey);
+  const [transcript, setTranscript] = useState("");
   
   const getRecordingFile = async () => {
     const blob = recordWebcam.getRecording();
@@ -126,8 +127,8 @@ export default function RecordView(props) {
               recordWebcam.status === "기다려주세요..."
             }
             onClick={async () => {
-              const blob = await recordWebcam.getRecording({type: "video/webm"});
-              getBlob(blob); 
+              const isblob = await recordWebcam.getRecording({type: "video/webm"});
+              getBlob(isblob);
               await axios({
                 url: `${BaseUrl}/uploadurl`,
                 method: "post",
@@ -136,20 +137,61 @@ export default function RecordView(props) {
                  questionId
                 }),
                 headers: {
-                  "Content-Type": "application/json; chaerset=utf-8",
+                  "Content-Type": "application/json; charset=utf-8",
                   "Authorization": `Bearer ${accessToken}`
                 }
               }).then((res) => {
                 console.log(res);
                 setIsUrl(res.data.preSignedUrl);
+                console.log(isblob);
+
+                //s3 업로드
                 axios({
                   url: `${isUrl}`,
                   method: "put",
+                  data: isblob,
                   headers: {
-                    "Content-Type": "video/webm"
+                    // "Content-Type": "video/webm"
                   }
                 }).then((res) => {
                   console.log(res);
+
+
+                // 자막 생성 요청
+                axios({
+                  url: `${BaseUrl}/transcription/create`,
+                  method: "post",
+                  data: JSON.stringify({
+                    questionId
+                  }),
+                  headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                    "Authorization": `Bearer ${accessToken}`
+                  }
+                }).then((res) => {
+                  console.log(res);
+                  
+                  //자막 불러오기
+                  axios({
+                    url: `${BaseUrl}/transcription`,
+                    method: "post",
+                    data: JSON.stringify({
+                      questionId
+                    }),
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": `Bearer ${accessToken}`
+                    }
+                  }).then((res) => {
+                    console.log(res);
+                    setTranscript(res.transcription);
+                  }).catch((err) => {
+                    console.log(err);
+                  })
+                }).catch((err) => {
+                  console.log(err);
+                })
+
                 }).catch((err) => {
                   console.log(err);
                 })
@@ -164,7 +206,7 @@ export default function RecordView(props) {
           <TitleFlex>
           <img src={Q} style={{width:"42px", height:"44px"}}/>
           <TitleStyle>{props.title}</TitleStyle>
-          
+          <div>{transcript}</div>
           </TitleFlex>
           </Modal>}
         </BtnLayout>
@@ -198,6 +240,7 @@ export default function RecordView(props) {
           autoPlay
           loop
         />
+
       </div>
     </div>
   );
