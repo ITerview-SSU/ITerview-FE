@@ -6,6 +6,8 @@ import Modal from "../../Modal/Modal";
 import Q from "../../../assets/Q..svg";
 import axios from "axios";
 import { BaseUrl } from "../../../privateKey";
+import { ColorRing } from 'react-loader-spinner';
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export default function RecordView(props) {
 
@@ -40,7 +42,8 @@ export default function RecordView(props) {
   const [filename, setFilename] = useState(`${timestring}.webm`);
   const [questionId, setQuestionId] = useState(props.questionkey);
   const [transcript, setTranscript] = useState("");
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   const getRecordingFile = async () => {
     const blob = recordWebcam.getRecording();
 
@@ -57,6 +60,7 @@ export default function RecordView(props) {
 
   const onClickCloseModal = () => {
     setIsModalOpen((prev) => !prev);
+    setTranscript("");
   }
 
   const accessToken = localStorage.getItem('accessToken');
@@ -184,7 +188,7 @@ export default function RecordView(props) {
                     }
                   }).then((res) => {
                     console.log(res);
-                    setTranscript(res.transcription);
+                    setTranscript(res.data.transcription);
                   }).catch((err) => {
                     console.log(err);
                   })
@@ -198,6 +202,7 @@ export default function RecordView(props) {
               }).catch((err) => {
                 console.log(err);
               })
+
               onClickVideoModal();}}
           >
             내 답변 보기
@@ -206,8 +211,24 @@ export default function RecordView(props) {
           <TitleFlex>
           <img src={Q} style={{width:"42px", height:"44px"}}/>
           <TitleStyle>{props.title}</TitleStyle>
-          <div>{transcript}</div>
           </TitleFlex>
+          {transcript ?
+          <div style={{marginTop:"30px", width:"800px", textAlign:"start", fontSize:"23px", fontWeight:"600", lineHeight:"161.7%", color:"#303132", paddingLeft:"105px", paddingRight:"105px"}}>{transcript}</div>
+          :
+          <>
+          <div style={{textAlign: "center", marginTop: "110px"}}>
+          <ColorRing
+            visible={true}
+            height="100"
+            width="100"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={['#9E3DFF', '#3840FF', '#ACADAD', '#787879', '#535455']}
+          />
+          <div style={{paddingTop:"30px", fontSize:"30px"}}>잠시만 기다려주세요!! 답변 생성 중...</div>
+          </div>
+          </> }
           </Modal>}
         </BtnLayout>
         <video
