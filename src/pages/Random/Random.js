@@ -43,18 +43,8 @@ function Random() {
   }, []);
 
   const NextRandomClick = () => {
-    setIsNum(isNum + 1);
-
-    for (let i = 1; i < isRandomQuestion.length; i++) {
-      // setIsTitle(isRandomQuestion[i].questionString);
-      // console.log(isTitle);
-      if(isNum === i) {
-      setIsTitle(isRandomQuestion[i].questionString);
-      console.log(isTitle);
-      console.log(isNum);
-      console.log(i);
-      }
-    }
+    setIsNum((isNum) => isNum+1);
+    setIsTitle(isRandomQuestion[isNum+1].questionString)
   }
 
 
