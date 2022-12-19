@@ -9,11 +9,17 @@ import Suffle from "../../../assets/shuffle.svg";
 import { useNavigate } from 'react-router-dom';
 import NotLoginNavBar from '../../../components/TopNav/NotLoginNav/index';
 import PMAccodian from '../../../components/Accodian/accodians/pmaccodian';
+import { userState } from '../../../recoil/user';
+import { useRecoilState } from 'recoil';
+import Iterview from "../../../assets/Iterview.svg";
+import { StartButtonLayout } from '../../../components/commons/Button/styles';
 
 function PMQuesiton() {
 
   const [iscount, setIsCount] = useState([]);
   const navigate = useNavigate();
+  const [user, setUser] = useRecoilState(userState);
+  
   const RandomClickHandler = (role) => {
       navigate("/random/pm");
   }
@@ -33,8 +39,14 @@ function PMQuesiton() {
       console.log(err);
     } 
   }, [])
-  
+
+  const onClickHome = () => {
+    navigate("/");
+  }
+
   return (
+    <>
+    {user ?
     <>
       <NotLoginNavBar />
       <AnimationBar />
@@ -56,6 +68,42 @@ function PMQuesiton() {
         <PMAccodian />
       </QuestionPageLayout>
     </>
+          :
+          <>
+              <NotLoginNavBar />
+              <AnimationBar />
+              <img style={{width:"250px", height:"100px", margin:"0 auto", marginTop:"100px"}} src={Iterview} />
+              <div
+                style={{
+                  margin:"0 auto",
+                  fontSize:"40px",
+                  fontWeight:"600px",
+                  marginTop:"50px"
+                }}
+              >회원이 아니시군요!</div>
+              <div
+                style={{
+                  margin:"0 auto",
+                  fontSize:"20px",
+                  fontWeight:"600px",
+                  marginTop:"90px"
+              }}>계속 이용하시려면 로그인 해주세요</div>
+              <div
+                style={{
+                  margin:"0 auto",
+                  fontSize:"20px",
+                  fontWeight:"600px",
+                  marginTop:"20px"
+              }}>이 페이지는 회원가입한 멤버만 볼 수 있습니다.</div>
+              <StartButtonLayout style={{
+                margin:"0 auto",
+                marginTop:"80px",
+                marginBottom:"250px"
+              }}
+              onClick={onClickHome}>홈으로</StartButtonLayout>
+          </>
+      }
+        </>
   )
 }
 
